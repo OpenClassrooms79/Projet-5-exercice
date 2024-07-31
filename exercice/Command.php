@@ -12,7 +12,12 @@ class Command
 
     public static function detail(int $id): void
     {
-        echo ContactManager::findById($id);
+        $contact = ContactManager::findById($id);
+        if ($contact !== null) {
+            echo $contact;
+        } else {
+            printf("Le contact n°%d n'existe pas\n", $id);
+        }
     }
 
     public static function create(string $name, string $email, string $phone_number): void
